@@ -1,5 +1,4 @@
 package net.anet.workflow.airflow.domain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -7,6 +6,8 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * A WorkflowTask.
@@ -31,9 +32,9 @@ public class WorkflowTask implements Serializable {
     @Column(name = "description", length = 60)
     private String description;
 
-    @ManyToOne
-    @JsonIgnoreProperties("workflowTasks")
-    private Anonimation anonimation;
+    @OneToMany(mappedBy = "workflowTask" , fetch=FetchType.EAGER)
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<Anonimation> anonimations = new HashSet<>();
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -70,17 +71,29 @@ public class WorkflowTask implements Serializable {
         this.description = description;
     }
 
-    public Anonimation getAnonimation() {
-        return anonimation;
+    public Set<Anonimation> getAnonimations() {
+        return anonimations;
     }
 
-    public WorkflowTask anonimation(Anonimation anonimation) {
-        this.anonimation = anonimation;
+    public WorkflowTask anonimations(Set<Anonimation> anonimations) {
+        this.anonimations = anonimations;
         return this;
     }
 
-    public void setAnonimation(Anonimation anonimation) {
-        this.anonimation = anonimation;
+    public WorkflowTask addAnonimation(Anonimation anonimation) {
+        this.anonimations.add(anonimation);
+        anonimation.setWorkflowTask(this);
+        return this;
+    }
+
+    public WorkflowTask removeAnonimation(Anonimation anonimation) {
+        this.anonimations.remove(anonimation);
+        anonimation.setWorkflowTask(null);
+        return this;
+    }
+
+    public void setAnonimations(Set<Anonimation> anonimations) {
+        this.anonimations = anonimations;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

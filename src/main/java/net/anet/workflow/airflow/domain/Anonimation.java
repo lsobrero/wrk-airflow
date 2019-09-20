@@ -1,4 +1,6 @@
 package net.anet.workflow.airflow.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -6,8 +8,6 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * A Anonimation.
@@ -32,9 +32,9 @@ public class Anonimation implements Serializable {
     @Column(name = "description", length = 60)
     private String description;
 
-    @OneToMany(mappedBy = "anonimation")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<WorkflowTask> workflowTasks = new HashSet<>();
+    @ManyToOne()
+    @JsonIgnoreProperties("anonimations")
+    private WorkflowTask workflowTask;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
@@ -71,29 +71,19 @@ public class Anonimation implements Serializable {
         this.description = description;
     }
 
-    public Set<WorkflowTask> getWorkflowTasks() {
-        return workflowTasks;
+/*
+    public WorkflowTask getWorkflowTask() {
+        return workflowTask;
     }
+*/
 
-    public Anonimation workflowTasks(Set<WorkflowTask> workflowTasks) {
-        this.workflowTasks = workflowTasks;
+    public Anonimation workflowTask(WorkflowTask workflowTask) {
+        this.workflowTask = workflowTask;
         return this;
     }
 
-    public Anonimation addWorkflowTask(WorkflowTask workflowTask) {
-        this.workflowTasks.add(workflowTask);
-        workflowTask.setAnonimation(this);
-        return this;
-    }
-
-    public Anonimation removeWorkflowTask(WorkflowTask workflowTask) {
-        this.workflowTasks.remove(workflowTask);
-        workflowTask.setAnonimation(null);
-        return this;
-    }
-
-    public void setWorkflowTasks(Set<WorkflowTask> workflowTasks) {
-        this.workflowTasks = workflowTasks;
+    public void setWorkflowTask(WorkflowTask workflowTask) {
+        this.workflowTask = workflowTask;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
