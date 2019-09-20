@@ -1,6 +1,6 @@
 package net.anet.workflow.airflow.web.rest;
 
-import net.anet.workflow.airflow.AirflowApp;
+import net.anet.workflow.airflow.WrkairflowApp;
 import net.anet.workflow.airflow.domain.Anonimation;
 import net.anet.workflow.airflow.repository.AnonimationRepository;
 import net.anet.workflow.airflow.web.rest.errors.ExceptionTranslator;
@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests for the {@link AnonimationResource} REST controller.
  */
-@SpringBootTest(classes = AirflowApp.class)
+@SpringBootTest(classes = WrkairflowApp.class)
 public class AnonimationResourceIT {
 
     private static final String DEFAULT_TYPE = "AAAAAAAAAA";

@@ -1,6 +1,6 @@
 package net.anet.workflow.airflow.web.rest.errors;
 
-import net.anet.workflow.airflow.AirflowApp;
+import net.anet.workflow.airflow.WrkairflowApp;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests {@link ExceptionTranslator} controller advice.
  */
-@SpringBootTest(classes = AirflowApp.class)
+@SpringBootTest(classes = WrkairflowApp.class)
 public class ExceptionTranslatorIT {
 
     @Autowired

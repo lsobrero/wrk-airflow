@@ -1,7 +1,7 @@
 {
-  "name": "airflow",
+  "name": "wrkairflow",
   "version": "0.0.0",
-  "description": "Description for airflow",
+  "description": "Description for wrkairflow",
   "private": true,
   "license": "UNLICENSED",
   "cacheDirectories": [

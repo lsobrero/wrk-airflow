@@ -34,7 +34,7 @@ public class AnonimationResource {
 
     private final Logger log = LoggerFactory.getLogger(AnonimationResource.class);
 
-    private static final String ENTITY_NAME = "airflowAnonimation";
+    private static final String ENTITY_NAME = "wrkairflowAnonimation";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;

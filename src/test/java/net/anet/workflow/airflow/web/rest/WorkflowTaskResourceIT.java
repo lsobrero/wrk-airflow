@@ -1,6 +1,6 @@
 package net.anet.workflow.airflow.web.rest;
 
-import net.anet.workflow.airflow.AirflowApp;
+import net.anet.workflow.airflow.WrkairflowApp;
 import net.anet.workflow.airflow.domain.WorkflowTask;
 import net.anet.workflow.airflow.repository.WorkflowTaskRepository;
 import net.anet.workflow.airflow.service.WorkflowTaskService;
@@ -31,7 +31,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Integration tests for the {@link WorkflowTaskResource} REST controller.
  */
-@SpringBootTest(classes = AirflowApp.class)
+@SpringBootTest(classes = WrkairflowApp.class)
 public class WorkflowTaskResourceIT {
 
     private static final String DEFAULT_NAME = "AAAAAAAAAA";

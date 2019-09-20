@@ -1,6 +1,6 @@
 package net.anet.workflow.airflow.config.timezone;
 
-import net.anet.workflow.airflow.AirflowApp;
+import net.anet.workflow.airflow.WrkairflowApp;
 import net.anet.workflow.airflow.repository.timezone.DateTimeWrapper;
 import net.anet.workflow.airflow.repository.timezone.DateTimeWrapperRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -20,7 +20,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 /**
  * Integration tests for the UTC Hibernate configuration.
  */
-@SpringBootTest(classes = AirflowApp.class)
+@SpringBootTest(classes = WrkairflowApp.class)
 public class HibernateTimeZoneIT {
 
     @Autowired

@@ -28,7 +28,7 @@ public class WorkflowTaskResource {
 
     private final Logger log = LoggerFactory.getLogger(WorkflowTaskResource.class);
 
-    private static final String ENTITY_NAME = "airflowWorkflowTask";
+    private static final String ENTITY_NAME = "wrkairflowWorkflowTask";
 
     @Value("${jhipster.clientApp.name}")
     private String applicationName;

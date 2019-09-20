@@ -1,11 +1,11 @@
 version: '2'
 services:
-  airflow-postgresql:
+  wrkairflow-postgresql:
     image: postgres:11.5
     # volumes:
-    #     - ~/volumes/jhipster/airflow/postgresql/:/var/lib/postgresql/data/
+    #     - ~/volumes/jhipster/wrkairflow/postgresql/:/var/lib/postgresql/data/
     environment:
-      - POSTGRES_USER=airflow
+      - POSTGRES_USER=wrkairflow
       - POSTGRES_PASSWORD=
     ports:
       - 5432:5432

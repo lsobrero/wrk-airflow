@@ -17,15 +17,15 @@ eureka:
   client:
     enabled: false
   instance:
-    appname: airflow
-    instanceId: airflow:${spring.application.instance-id:${random.value}}
+    appname: wrkairflow
+    instanceId: wrkairflow:${spring.application.instance-id:${random.value}}
 
 spring:
   application:
-    name: airflow
+    name: wrkairflow
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:airflow;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MULTI_THREADED=FALSE
+    url: jdbc:h2:mem:wrkairflow;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;MULTI_THREADED=FALSE
     name:
     username:
     password:
@@ -62,13 +62,13 @@ spring:
       enabled: false
   task:
     execution:
-      thread-name-prefix: airflow-task-
+      thread-name-prefix: wrkairflow-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: airflow-scheduling-
+      thread-name-prefix: wrkairflow-scheduling-
       pool:
         size: 1
   thymeleaf:
@@ -86,7 +86,7 @@ server:
 
 jhipster:
   clientApp:
-    name: 'airflowApp'
+    name: 'wrkairflowApp'
   logging:
     # To test json console appender
     use-json-format: true # By default, logs are in Json format
@@ -99,7 +99,7 @@ jhipster:
     authentication:
       jwt:
         # This token must be encoded using Base64 (you can type `echo 'secret-key'|base64` on your command line)
-        base64-secret: NGI1M2I3OTI5NWUzNjVlOGY2ZWY0OGMwMmU0MDM0MDNjYTE5NWEwYzA3YWI1ZTRkNGUyMTllNzAxNjUzYjE5OTUyMWY2NjhmNzgzNGJkYzQ5ZGE1OGJmODBiMzk2MGY5MzY5ZDY1ZjBlYzNlOThkYWY0YTgwMzY4OGQzNWM0Nzk=
+        base64-secret: OTg0YjZiZGNmNDg4Mjk4MmJlNDkzMDQzNzllNzg5NGMwZmZjNjYxNTE0YjY5YjdmNmM4NDBlMmFiZWNiYjRiOTU0ZmI0YmMwMDJlOGU4NWMyMjVkNGUwZjhiYjQxY2Y3NmI3YzQ3OGJkZWE1MTUzZmYxMGM2OWJhODE5NjllMWQ=
         # Token is valid 24 hours
         token-validity-in-seconds: 86400
   metrics:

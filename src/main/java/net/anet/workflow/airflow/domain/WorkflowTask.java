@@ -31,7 +31,7 @@ public class WorkflowTask implements Serializable {
     @Column(name = "description", length = 60)
     private String description;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JsonIgnoreProperties("workflowTasks")
     private Anonimation anonimation;
 
