@@ -1,5 +1,4 @@
 package net.anet.workflow.airflow.domain;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
@@ -32,7 +31,7 @@ public class Anonimation implements Serializable {
     @Column(name = "description", length = 60)
     private String description;
 
-    @ManyToOne()
+    @ManyToOne
     @JsonIgnoreProperties("anonimations")
     private WorkflowTask workflowTask;
 

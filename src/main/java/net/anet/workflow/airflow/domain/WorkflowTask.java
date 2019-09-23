@@ -32,7 +32,7 @@ public class WorkflowTask implements Serializable {
     @Column(name = "description", length = 60)
     private String description;
 
-    @OneToMany(mappedBy = "workflowTask" , fetch=FetchType.EAGER)
+    @OneToMany(mappedBy = "workflowTask")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Anonimation> anonimations = new HashSet<>();
 
