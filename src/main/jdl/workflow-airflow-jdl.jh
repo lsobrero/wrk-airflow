@@ -1,0 +1,51 @@
+application {
+  config {
+    baseName wrkairflowfe,
+    applicationType gateway,
+    packageName net.anet.workflow.airflowfe,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    buildTool maven,
+    serverPort 9080
+  }
+  entities *   
+}
+
+
+
+application {
+  config {
+    baseName wrkairflow,
+    applicationType microservice,
+    packageName net.anet.workflow.airflow,
+    serviceDiscoveryType eureka,
+    authenticationType jwt,
+    prodDatabaseType postgresql,
+    buildTool maven,
+    serverPort 8081,
+    skipUserManagement true
+  }
+  entities *   
+}
+
+
+entity WorkflowTask {
+	Name String maxlength(60)
+	Description String maxlength(60)
+}
+
+entity Anonimation {
+	Type String maxlength(60)
+	Description String maxlength(60)
+}
+
+
+relationship OneToMany {
+	WorkflowTask to Anonimation{workflowTask(Name)}
+}
+
+service WorkflowTask with serviceClass
+paginate Anonimation with pagination
+
+microservice WorkflowTask,Anonimation with wrkairflow
