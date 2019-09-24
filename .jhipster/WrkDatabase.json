@@ -1,0 +1,67 @@
+{
+    "name": "WrkDatabase",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength",
+                "unique"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 30
+        },
+        {
+            "fieldName": "host",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "port",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "username",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "pasUser",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "wrkDbTableName",
+            "otherEntityRelationshipName": "databaseName",
+            "relationshipName": "tableName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "wrkDataset",
+            "otherEntityRelationshipName": "dbName",
+            "relationshipName": "wrkDataSet",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190924063718",
+    "entityTableName": "wrk_database",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "wrkairflowfe",
+        "wrkairflow"
+    ],
+    "microserviceName": "wrkairflow"
+}

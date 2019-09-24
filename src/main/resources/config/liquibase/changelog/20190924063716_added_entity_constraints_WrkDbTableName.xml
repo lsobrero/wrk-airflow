@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity WrkDbTableName.
+    -->
+    <changeSet id="20190924063716-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="database_name_id"
+                                 baseTableName="wrk_db_table_name"
+                                 constraintName="fk_wrk_db_table_name_database_name_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="wrk_database"/>
+
+    </changeSet>
+</databaseChangeLog>

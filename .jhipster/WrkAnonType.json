@@ -1,0 +1,42 @@
+{
+    "name": "WrkAnonType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength",
+                "unique"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 30
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "wrkDbColType",
+            "otherEntityRelationshipName": "anonType",
+            "relationshipName": "colType"
+        }
+    ],
+    "changelogDate": "20190924063714",
+    "entityTableName": "wrk_anon_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "wrkairflowfe",
+        "wrkairflow"
+    ],
+    "microserviceName": "wrkairflow"
+}

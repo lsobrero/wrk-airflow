@@ -1,0 +1,47 @@
+{
+  "generator-jhipster": {
+    "databaseType": "sql",
+    "devDatabaseType": "h2Disk",
+    "enableHibernateCache": true,
+    "enableSwaggerCodegen": false,
+    "enableTranslation": true,
+    "jhiPrefix": "jhi",
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "messageBroker": false,
+    "nativeLanguage": "en",
+    "packageName": "net.anet.workflow.airflow",
+    "packageFolder": "net/anet/workflow/airflow",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": false,
+    "serviceDiscoveryType": "eureka",
+    "skipClient": true,
+    "testFrameworks": [],
+    "websocket": false,
+    "baseName": "wrkairflow",
+    "applicationType": "microservice",
+    "authenticationType": "jwt",
+    "buildTool": "maven",
+    "serverPort": "8081",
+    "skipUserManagement": true,
+    "jhipsterVersion": "6.3.0",
+    "clientPackageManager": "npm",
+    "cacheProvider": "hazelcast",
+    "jwtSecretKey": "YzYwZGJiMzQ0NjM0YjNhNGQyYjNkMDA2NmE5NzlmZDY1YzQ4YmZjNjkyMjUwNGUzNWFkMGJhMWI2YmZjNTYzYzQyNGMxNWVhMDJmYTk0YTkyZmNlNjg4MmY0Y2JjYzcxOGE0OTIxOTE3NDU1MjRkM2NmZTMwYTczNmY3ZGIyMDk=",
+    "embeddableLaunchScript": false,
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "blueprints": []
+  },
+  "entities": [
+    "WrkAnonType",
+    "WrkDbColType",
+    "WrkDbTableName",
+    "WrkDbColName",
+    "WrkDatabase",
+    "WrkDataset"
+  ]
+}

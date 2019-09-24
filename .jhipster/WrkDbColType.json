@@ -1,0 +1,49 @@
+{
+    "name": "WrkDbColType",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength",
+                "unique"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 30
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "wrkDbColName",
+            "otherEntityRelationshipName": "colType",
+            "relationshipName": "colName"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "wrkAnonType",
+            "otherEntityRelationshipName": "colType",
+            "relationshipName": "anonType",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190924063715",
+    "entityTableName": "wrk_db_col_type",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "wrkairflowfe",
+        "wrkairflow"
+    ],
+    "microserviceName": "wrkairflow"
+}
