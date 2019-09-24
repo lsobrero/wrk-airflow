@@ -1,0 +1,39 @@
+{
+    "name": "MyTest",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required",
+                "minlength",
+                "maxlength",
+                "unique"
+            ],
+            "fieldValidateRulesMinlength": 3,
+            "fieldValidateRulesMaxlength": 30
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "myDummy",
+            "otherEntityRelationshipName": "colName",
+            "relationshipName": "colType",
+            "otherEntityField": "name"
+        }
+    ],
+    "changelogDate": "20190924104450",
+    "entityTableName": "my_test",
+    "dto": "mapstruct",
+    "pagination": "no",
+    "service": "serviceClass",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": [
+        "wrkairflowfe",
+        "wrkairflow"
+    ],
+    "microserviceName": "wrkairflow"
+}

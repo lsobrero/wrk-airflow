@@ -20,10 +20,13 @@
     <include file="config/liquibase/changelog/20190924063717_added_entity_WrkDbColName.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190924063718_added_entity_WrkDatabase.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190924063719_added_entity_WrkDataset.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190924104449_added_entity_MyDummy.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190924104450_added_entity_MyTest.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="config/liquibase/changelog/20190924063715_added_entity_constraints_WrkDbColType.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190924063716_added_entity_constraints_WrkDbTableName.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190924063717_added_entity_constraints_WrkDbColName.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190924063718_added_entity_constraints_WrkDatabase.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190924104450_added_entity_constraints_MyTest.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

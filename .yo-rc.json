@@ -42,6 +42,8 @@
     "WrkDbTableName",
     "WrkDbColName",
     "WrkDatabase",
-    "WrkDataset"
+    "WrkDataset",
+    "MyDummy",
+    "MyTest"
   ]
 }

@@ -4,6 +4,8 @@ import net.anet.workflow.airflow.domain.WrkDataset;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Spring Data  repository for the WrkDatabase entity.
@@ -11,6 +13,6 @@ import org.springframework.stereotype.Repository;
 @SuppressWarnings("unused")
 @Repository
 public interface WrkDatabaseRepository extends JpaRepository<WrkDatabase, Long> {
-    WrkDatabase findByWrkDataSet(WrkDataset dataset);
+    List<WrkDatabase> findByWrkDataSet(WrkDataset dataset);
 
 }

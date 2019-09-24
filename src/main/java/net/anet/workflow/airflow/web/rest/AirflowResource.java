@@ -1,22 +1,18 @@
 package net.anet.workflow.airflow.web.rest;
 
-import io.github.jhipster.web.util.PaginationUtil;
-import net.anet.workflow.airflow.domain.WrkDataset;
 import net.anet.workflow.airflow.service.AirFlowDatasetService;
-import net.anet.workflow.airflow.service.WrkDatasetService;
+import net.anet.workflow.airflow.service.dto.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.util.List;
+import java.util.Optional;
 
 /**
  * REST controller for managing {@link net.anet.workflow.airflow.domain.WrkDataset}.
@@ -47,11 +43,40 @@ public class AirflowResource {
      * @return the {@link ResponseEntity} with status {@code 200 (OK)} and the list of wrkDatasets in body.
      */
     @GetMapping("/af-datasets")
-    public ResponseEntity<List<WrkDataset>> getAllWrkDatasets(Pageable pageable) {
+    public List<AfDatasetDTO> getAllWrkDatasets(Pageable pageable) {
         log.debug("REST request to get a page of WrkDatasets");
-        Page<WrkDataset> page = afDatasetService.findAll(pageable);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(ServletUriComponentsBuilder.fromCurrentRequest(), page);
-        return ResponseEntity.ok().headers(headers).body(page.getContent());
+        List<AfDatasetDTO> result = afDatasetService.findAll(pageable);
+        log.debug("Found {} datasets", result.size());
+        for(AfDatasetDTO ds : result){
+            log.debug("Search Databases for Dataset with id={}",ds.getId());
+            List<AfDatabaseDTO> databases = afDatasetService.findDatabaseByDatasetId(ds.getId());
+            for(AfDatabaseDTO db : databases){
+                log.debug("Found Database with id={} and Name {}",db.getId(), db.getName());
+                List<AfDbTableNameDTO> tables = afDatasetService.findTablesNamesByDatabaseId(db.getId());
+                log.debug("Found {} Tables",tables.size());
+                for(AfDbTableNameDTO table:tables){
+                    log.debug("Using Table name={}", table.getName());
+                    List<AfDbColNameDTO> cols = afDatasetService.findColNamesByTableId(table.getId());
+                    log.debug("Found {} Columns",cols.size());
+                    for(AfDbColNameDTO col : cols) {
+                        log.debug("Using Column name={}",col.toString());
+                        Optional<AfDbColTypeDTO>colTypeO = afDatasetService.findDbColType(col.getId());
+                        if(colTypeO.isPresent()){
+                            AfDbColTypeDTO coltype=afDatasetService.findDbColType(col.getId()).orElse(null);
+                            log.debug("Found {} DbColType",coltype.toString());
+                            col.setColumnType(coltype);
+
+                        }else{
+                            log.debug("DbColType is not present");
+                        }
+                    }
+                    table.setCols(cols);
+                }
+                db.setTables(tables);
+                ds.setDatabase(db);
+            }
+        }
+        return result;
     }
 
 }
