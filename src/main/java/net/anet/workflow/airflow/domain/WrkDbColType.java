@@ -37,7 +37,7 @@ public class WrkDbColType implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<WrkDbColName> colNames = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JsonIgnoreProperties("colTypes")
     private WrkAnonType anonType;
 
@@ -76,11 +76,9 @@ public class WrkDbColType implements Serializable {
         this.description = description;
     }
 
-/*
     public Set<WrkDbColName> getColNames() {
         return colNames;
     }
-*/
 
     public WrkDbColType colNames(Set<WrkDbColName> wrkDbColNames) {
         this.colNames = wrkDbColNames;

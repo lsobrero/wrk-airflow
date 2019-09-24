@@ -35,7 +35,7 @@ public class WrkDbColName implements Serializable {
     @JsonIgnoreProperties("colNames")
     private WrkDbTableName dbName;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne
     @JsonIgnoreProperties("colNames")
     private WrkDbColType colType;
 
@@ -74,11 +74,9 @@ public class WrkDbColName implements Serializable {
         this.description = description;
     }
 
-/*
     public WrkDbTableName getDbName() {
         return dbName;
     }
-*/
 
     public WrkDbColName dbName(WrkDbTableName wrkDbTableName) {
         this.dbName = wrkDbTableName;

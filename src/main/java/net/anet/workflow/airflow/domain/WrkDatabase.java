@@ -44,7 +44,7 @@ public class WrkDatabase implements Serializable {
     @Column(name = "pas_user")
     private String pasUser;
 
-    @OneToMany(mappedBy = "databaseName", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "databaseName")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<WrkDbTableName> tableNames = new HashSet<>();
 
@@ -151,11 +151,9 @@ public class WrkDatabase implements Serializable {
         this.tableNames = wrkDbTableNames;
     }
 
-/*
     public WrkDataset getWrkDataSet() {
         return wrkDataSet;
     }
-*/
 
     public WrkDatabase wrkDataSet(WrkDataset wrkDataset) {
         this.wrkDataSet = wrkDataset;

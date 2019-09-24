@@ -33,7 +33,7 @@ public class WrkDataset implements Serializable {
     @Column(name = "is_enabled", nullable = false)
     private Boolean isEnabled;
 
-    @OneToMany(mappedBy = "wrkDataSet", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "wrkDataSet")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<WrkDatabase> dbNames = new HashSet<>();
 

@@ -33,7 +33,7 @@ public class WrkDbTableName implements Serializable {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "dbName", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dbName")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<WrkDbColName> colNames = new HashSet<>();
 
@@ -101,11 +101,9 @@ public class WrkDbTableName implements Serializable {
         this.colNames = wrkDbColNames;
     }
 
-/*
     public WrkDatabase getDatabaseName() {
         return databaseName;
     }
-*/
 
     public WrkDbTableName databaseName(WrkDatabase wrkDatabase) {
         this.databaseName = wrkDatabase;
