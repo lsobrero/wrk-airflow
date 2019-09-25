@@ -3,6 +3,7 @@ package net.anet.workflow.airflow.service.dto;
 public class AfDbColTypeDTO {
     private long id;
     private String name;
+    private AfAnonTypeDTO anonType;
 
     public long getId() {
         return id;
@@ -18,6 +19,14 @@ public class AfDbColTypeDTO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public AfAnonTypeDTO getAnonType() {
+        return anonType;
+    }
+
+    public void setAnonType(AfAnonTypeDTO anonType) {
+        this.anonType = anonType;
     }
 
     @Override
@@ -40,6 +49,7 @@ public class AfDbColTypeDTO {
         return "AfDbColTypeDTO{" +
             "id=" + id +
             ", name='" + name + '\'' +
+            ", anonType=" + anonType +
             '}';
     }
 }

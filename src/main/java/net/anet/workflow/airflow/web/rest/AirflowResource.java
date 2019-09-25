@@ -1,13 +1,16 @@
 package net.anet.workflow.airflow.web.rest;
 
+import io.github.jhipster.web.util.ResponseUtil;
 import net.anet.workflow.airflow.service.AirFlowDatasetService;
 import net.anet.workflow.airflow.service.dto.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -60,12 +63,16 @@ public class AirflowResource {
                     log.debug("Found {} Columns",cols.size());
                     for(AfDbColNameDTO col : cols) {
                         log.debug("Using Column name={}",col.toString());
-                        Optional<AfDbColTypeDTO>colTypeO = afDatasetService.findDbColType(col.getId());
-                        if(colTypeO.isPresent()){
-                            AfDbColTypeDTO coltype=afDatasetService.findDbColType(col.getId()).orElse(null);
+                        Optional<AfDbColTypeDTO>colType = afDatasetService.findDbColType(col.getId());
+                        if(colType.isPresent()){
+                            AfDbColTypeDTO coltype=colType.orElse(null);
                             log.debug("Found {} DbColType",coltype.toString());
+                            Optional<AfAnonTypeDTO>anonType = afDatasetService.findAnonType(coltype.getId());
+                            if(anonType.isPresent()){
+                                log.debug("Found {} AnonType", anonType.toString());
+                                coltype.setAnonType(anonType.orElse(null));
+                            }
                             col.setColumnType(coltype);
-
                         }else{
                             log.debug("DbColType is not present");
                         }
@@ -77,6 +84,19 @@ public class AirflowResource {
             }
         }
         return result;
+    }
+
+    /**
+     * Get's the AfDataset
+     * Given the AfDataset name returns the AfDataset
+     * @param name
+     * @return AfDataset
+     */
+    @GetMapping("/af-dataset/{name}")
+    public ResponseEntity getAfDatasetByName(@PathVariable String name) {
+        log.debug("REST request to get AfDataset: {}", name);
+        AfDatasetDTO afDatasetDTO = afDatasetService.findAfDatasetByName(name);
+        return ResponseEntity.ok(afDatasetDTO);
     }
 
 }
